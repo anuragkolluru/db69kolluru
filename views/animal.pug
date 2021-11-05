@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  - var animals = animal;
+  h1 Search Results
+  div(class="container-fluid")
+        each value,index in animals
+          div(class="row",style="cursor:pointer",onclick=`buy(${index+1})`)
+             div(class="col-lg-2 col-4 col-sm-2") #{value.ctype} 
+             div(class="col-lg-2 col-4 col-sm-2") #{value.cnum}
+             div(class="col-lg-2 col-4 col-sm-2") #{value.location}
+  
+  script. 
+       function buy(rowNo){
+         alert('You purchased item' + rowNo);
+       }
