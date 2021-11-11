@@ -1,16 +1,18 @@
 extends layout
 
 block content
-  - var animals = animal;
-  h1 Search Results
+  h1= title
+  p Welcome to the animal pug
   div(class="container-fluid")
-        each value,index in animals
-          div(class="row",style="cursor:pointer",onclick=`buy(${index+1})`)
-             div(class="col-lg-2 col-4 col-sm-2") #{value.ctype} 
-             div(class="col-lg-2 col-4 col-sm-2") #{value.cnum}
-             div(class="col-lg-2 col-4 col-sm-2") #{value.location}
-  
-  script. 
-       function buy(rowNo){
-         alert('You purchased item' + rowNo);
-       }
+        div(class="row")
+            -
+                let animal = results
+            each v,index in animal
+                div(class="col-sm-2" onclick=`buy(${index})`) #{v.ctype}
+                div(class="col-sm-2" onclick=`buy(${index})`) #{v.cnum}
+                div(class="col-sm-2" onclick=`buy(${index})`) #{v.location}
+  script.                
+    function buy(itemNo)
+    {
+        alert(`you purchased Item ${itemNo+1}`)
+    }

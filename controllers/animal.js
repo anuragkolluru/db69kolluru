@@ -13,14 +13,35 @@ exports.animal_list = async function(req, res) {
     }   
 };
 
+// VIEWS 
+// Handle a show all view 
+exports.animal_view_all_Page = async function(req, res) { 
+    try{ 
+        theanimal = await animal.find(); 
+        res.render('animal', { title: 'animal Search Results', results: theanimal }); 
+    } 
+    catch(err){ 
+        res.status(500); 
+        res.send(`{"error": ${err}}`); 
+    }   
+}; 
+
 // for a specific animal. 
 exports.animal_detail = function (req, res) {
     res.send('NOT IMPLEMENTED: animal detail: ' + req.params.id);
 };
 
-// Handle animal create on POST. 
-exports.animal_create_post = function (req, res) {
-    res.send('NOT IMPLEMENTED: animal create POST');
+// VIEWS
+// Handle a show all view
+exports.animal_view_all_Page = async function (req, res) {
+    try {
+        theanimal = await animal.find();
+        res.render('animal', { title: 'animal Search Results', results: theanimal });
+    }
+    catch (err) {
+        res.send(`{"error": ${err}}`)
+        res.status(500);
+    }
 };
 
 // Handle animal delete form on DELETE. 
