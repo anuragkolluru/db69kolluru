@@ -1,8 +1,16 @@
 var animal = require('../models/animal');
 
 // List of all animal 
-exports.animal_list = function (req, res) {
-    res.send('NOT IMPLEMENTED: animal list');
+exports.animal_list = async function(req, res) { 
+    try{ 
+        theanimal = await animal.find(); 
+        res.send(theanimal); 
+    } 
+    catch(err){ 
+        
+        res.send(`{"error": ${err}}`); 
+        res.status(500); 
+    }   
 };
 
 // for a specific animal. 
