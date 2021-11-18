@@ -2,22 +2,24 @@ extends layout
  
 block content 
   h1= title 
- 
-  - let id = toShow._id 
-  - let ctype = toShow.ctype 
-  - let cnum = toShow.cnum 
-  - let location = toShow.location 
+  if (toShow == null) 
+    h2 No instance to fetch 
+  else 
+    - let id = toShow._id 
+    - let ctype = toShow.ctype 
+    - let cnum = toShow.cnum 
+    - let location = toShow.location 
 
-  div 
-    div.row 
-      div(class='animalAttr mr-3')  ID is: 
-      div #{id} 
-    div.row 
-      div(class='animalAttr mr-3') CType is: 
-      div #{ctype} 
-    div.row 
-      div(class='animalAttr mr-3')  CNum is: 
-      div #{cnum} 
-    div.row 
-      div(class='animalAttr mr-3') Location is: 
-      div #{location} 
+    div 
+        div.row 
+        div(class='animalAttr mr-3')  ID is: 
+        div #{id} 
+        div.row 
+        div(class='animalAttr mr-3') CType is: 
+        div #{ctype} 
+        div.row 
+        div(class='animalAttr mr-3')  CNum is: 
+        div #{cnum} 
+        div.row 
+        div(class='animalAttr mr-3') Location is: 
+        div #{location} 

@@ -3,27 +3,30 @@ extends layout
 block content 
   h1= title 
  
-  - let animalid = toShow._id 
-  - let ctype = toShow.ctype 
-  - let cnum = toShow.cnum 
-  - let location = toShow.location 
-   
-  div.row(class='mb-2') 
-    div.mr-1 ID is 
-    div #{animalid} 
-  - let actionid = "/resource/animal/" + animalid 
-  form(id='AnimalForm', action= actionid, method="PUT") 
-    div.form-group 
-        label.animalAttr(for='ctype') animal type 
-        input#ctype(type='text', name='ctype', value= ctype ) 
-    div.form-group 
-        label.animalAttr(for='cnum') animal number 
-        input#cnum(type='number', name='cnum', value= cnum ) 
-    div.form-group 
-        label.animalAttr(for='location') animal location 
-        input#location(type='text', name='location', value= location ) 
-    input(type="submit") 
- 
+  if (toShow == null) 
+    h2 No instance to update 
+  else 
+    - let animalid = toShow._id 
+    - let ctype = toShow.ctype 
+    - let cnum = toShow.cnum 
+    - let location = toShow.location 
+    
+    div.row(class='mb-2') 
+        div.mr-1 ID is 
+        div #{animalid} 
+    - let actionid = "/resource/animal/" + animalid 
+    form(id='AnimalForm', action= actionid, method="PUT") 
+        div.form-group 
+            label.animalAttr(for='ctype') animal type 
+            input#ctype(type='text',class="form-control", name='ctype', value= ctype ) 
+        div.form-group 
+            label.animalAttr(for='cnum') animal number 
+            input#cnum(type='number',class="form-control", name='cnum', value= cnum ) 
+        div.form-group 
+            label.animalAttr(for='location') animal location 
+            input#location(type='text',class="form-control", name='location', value= location ) 
+        input(type="submit" button="btn btn-primary") 
+    
   script. 
     document.forms['AnimalForm'].addEventListener('submit', (event) => { 
       event.preventDefault(); 
