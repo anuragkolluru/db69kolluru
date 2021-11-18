@@ -13,7 +13,7 @@ router.get('/', api_controller.api);
 /// animal ROUTES /// 
  
 // POST request for creating a animal.  
-// router.post('/animal', animal_controller.animal_create_post); 
+router.post('/animal', animal_controller.animal_create_post); 
  
 // DELETE request to delete animal. 
 router.delete('/animal/:id', animal_controller.animal_delete); 
@@ -27,5 +27,6 @@ router.get('/animal/:id', animal_controller.animal_detail);
  
 // GET request for list of all animal items. 
 router.get('/animal', animal_controller.animal_list); 
+
  
 module.exports = router; 
