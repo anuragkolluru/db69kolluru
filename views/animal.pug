@@ -4,15 +4,21 @@ block content
   h1= title
   p Welcome to the animal pug
   div(class="container-fluid")
-        div(class="row")
+        div(class="row m-1")
             -
                 let animal = results
             each v,index in animal
+                - let destination = `dispatch(\"/animal/update?id=${v._id}\")` 
                 div(class="col-sm-2" onclick=`buy(${index})`) #{v.ctype}
                 div(class="col-sm-2" onclick=`buy(${index})`) #{v.cnum}
                 div(class="col-sm-2" onclick=`buy(${index})`) #{v.location}
+                button.btn( class="btn-primary ml-1", onclick= destination) Update 
   script.                
     function buy(itemNo)
     {
         alert(`you purchased Item ${itemNo+1}`)
     }
+
+    function dispatch(path){ 
+      window.location.href=path 
+    } 
